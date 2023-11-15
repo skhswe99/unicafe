@@ -30,12 +30,21 @@ const App = () => {
       <button onClick={handleNeutral} id='neutral-button'>neutral</button>
       <button onClick={handleBad} id='bad-button'>bad</button>
       <p>statistics</p>
-      good {good}<br/>
-      neutral {neutral}<br/>
-      bad {bad}<br/>
-      all {sum}<br/>
-      average {sum > 0 ? (good - bad) / sum : 'N/A'}<br/>
-      positive {sum > 0 ? `${good/sum*100}%`: 'N/A'}<br/>
+      
+      {sum > 0 ? 
+        <> {/*conditional rendering*/}
+          good {good}<br/>
+          neutral {neutral}<br/>
+          bad {bad}<br/>
+          all {sum}<br/>
+          average {sum > 0 ? (good - bad) / sum : 'N/A'}<br/>
+          positive {sum > 0 ? `${good/sum*100}%`: 'N/A'}<br/>
+        </>
+      : 
+        <>
+          No feedback given
+        </>
+      }
     </div>
 )
 }
