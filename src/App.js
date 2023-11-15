@@ -21,6 +21,8 @@ const App = () => {
     const newBadCount = bad + 1
     setBad(newBadCount)
   }
+
+  const sum = good + neutral + bad
   return (
     <div>
       <p>give feedback</p>
@@ -31,6 +33,9 @@ const App = () => {
       good {good}<br/>
       neutral {neutral}<br/>
       bad {bad}<br/>
+      all {sum}<br/>
+      average {sum > 0 ? (good - bad) / sum : 'N/A'}<br/>
+      positive {sum > 0 ? `${good/sum*100}%`: 'N/A'}<br/>
     </div>
 )
 }
