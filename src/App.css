@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+button {
+  margin: 5px;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+#good-button {
+  border: 2px solid blue;
+}
+
+#neutral-button {
+  border: 2px solid green;
+}
+
+#bad-button {
+  border: 2px solid red;
+}
