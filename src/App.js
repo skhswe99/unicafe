@@ -11,19 +11,23 @@ const Button = ({handleClick, text}) => {
 
 const StatisticLine = ({text, value}) => {
   return(
-    <li>{text} {value}</li>
+    <>
+      <td>{text}</td><td>{value}</td>
+    </>
   )
 }
 const Statistics = (props) => {
   return(
-    <ul>
-      <StatisticLine text='good' value={props.good} />
-      <StatisticLine text='neutral' value={props.neutral} />
-      <StatisticLine text='bad' value={props.bad} />
-      <StatisticLine text='all' value={props.sum} />
-      <StatisticLine text='average' value={(props.good - props.bad)/props.sum} />
-      <StatisticLine text='positive' value={`${props.good/props.sum*100}%`} />
-    </ul>
+    <table>
+      <tbody>
+        <tr><StatisticLine text='good' value={props.good} /></tr>
+        <tr><StatisticLine text='neutral' value={props.neutral} /></tr>
+        <tr><StatisticLine text='bad' value={props.bad} /></tr>
+        <tr><StatisticLine text='all' value={props.sum} /></tr>
+        <tr><StatisticLine text='average' value={(props.good - props.bad)/props.sum} /></tr>
+        <tr><StatisticLine text='positive' value={`${props.good/props.sum*100}%`} /></tr>
+        </tbody>
+    </table>
   )
 }
 const App = () => {
@@ -51,22 +55,15 @@ const App = () => {
   return (
     <div>
       <p>give feedback</p>
-      
       <Button handleClick={handleGood} text='good'/>
       <Button handleClick={handleNeutral} text='neutral'/>
       <Button handleClick={handleBad} text='bad'/>
       <p>statistics</p>
       
       {sum > 0 ? 
-        <ul> {/*conditional rendering*/}
-          {/* <li>good {good}</li>
-          <li>neutral {neutral}</li>
-          <li>bad {bad}</li>
-          <li>all {sum}</li>
-          <li>average {(good - bad) / sum }</li>
-          <li>positive {`${good/sum*100}%`}</li> */}
-          <Statistics good={good} neutral={neutral} bad={bad} sum={sum} />
-        </ul>
+        <> {/*conditional rendering*/}
+            <Statistics good={good} neutral={neutral} bad={bad} sum={sum} />
+        </>
       : 
         <p>
           No feedback given
