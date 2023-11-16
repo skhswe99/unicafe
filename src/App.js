@@ -8,6 +8,24 @@ const Button = ({handleClick, text}) => {
     </button>
   )
 }
+
+const StatisticLine = ({text, value}) => {
+  return(
+    <li>{text} {value}</li>
+  )
+}
+const Statistics = (props) => {
+  return(
+    <ul>
+      <StatisticLine text='good' value={props.good} />
+      <StatisticLine text='neutral' value={props.neutral} />
+      <StatisticLine text='bad' value={props.bad} />
+      <StatisticLine text='all' value={props.sum} />
+      <StatisticLine text='average' value={(props.good - props.bad)/props.sum} />
+      <StatisticLine text='positive' value={`${props.good/props.sum*100}%`} />
+    </ul>
+  )
+}
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -41,12 +59,13 @@ const App = () => {
       
       {sum > 0 ? 
         <ul> {/*conditional rendering*/}
-          <li>good {good}</li>
+          {/* <li>good {good}</li>
           <li>neutral {neutral}</li>
           <li>bad {bad}</li>
           <li>all {sum}</li>
-          <li>average {sum > 0 ? (good - bad) / sum : 'N/A'}</li>
-          <li>positive {sum > 0 ? `${good/sum*100}%`: 'N/A'}</li>
+          <li>average {(good - bad) / sum }</li>
+          <li>positive {`${good/sum*100}%`}</li> */}
+          <Statistics good={good} neutral={neutral} bad={bad} sum={sum} />
         </ul>
       : 
         <p>
