@@ -43,14 +43,19 @@ button {
   border-radius: 10px;
 }
 
-#good-button {
+#good {
   border: 2px solid blue;
 }
 
-#neutral-button {
+#neutral {
   border: 2px solid green;
 }
 
-#bad-button {
+#bad {
   border: 2px solid red;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
 }

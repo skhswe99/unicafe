@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 
+const Button = ({handleClick, text}) => {
+  return(
+    <button onClick={handleClick} id={text}>
+      {text}
+    </button>
+  )
+}
 const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
@@ -26,24 +33,25 @@ const App = () => {
   return (
     <div>
       <p>give feedback</p>
-      <button onClick={handleGood} id='good-button'>good</button>
-      <button onClick={handleNeutral} id='neutral-button'>neutral</button>
-      <button onClick={handleBad} id='bad-button'>bad</button>
+      
+      <Button handleClick={handleGood} text='good'/>
+      <Button handleClick={handleNeutral} text='neutral'/>
+      <Button handleClick={handleBad} text='bad'/>
       <p>statistics</p>
       
       {sum > 0 ? 
-        <> {/*conditional rendering*/}
-          good {good}<br/>
-          neutral {neutral}<br/>
-          bad {bad}<br/>
-          all {sum}<br/>
-          average {sum > 0 ? (good - bad) / sum : 'N/A'}<br/>
-          positive {sum > 0 ? `${good/sum*100}%`: 'N/A'}<br/>
-        </>
+        <ul> {/*conditional rendering*/}
+          <li>good {good}</li>
+          <li>neutral {neutral}</li>
+          <li>bad {bad}</li>
+          <li>all {sum}</li>
+          <li>average {sum > 0 ? (good - bad) / sum : 'N/A'}</li>
+          <li>positive {sum > 0 ? `${good/sum*100}%`: 'N/A'}</li>
+        </ul>
       : 
-        <>
+        <p>
           No feedback given
-        </>
+        </p>
       }
     </div>
 )
